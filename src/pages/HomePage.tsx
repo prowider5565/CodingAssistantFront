@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Code, Bot, Clock, Trophy, Terminal, LogIn, ArrowRight, Play, Check, Users, Zap, Code2, MessageSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Reusable Button Component
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -91,46 +92,47 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-blue-900/50 to-gray-900">
       {/* Navigation */}
       <header 
         className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
+          isScrolled ? 'bg-gray-900/80 backdrop-blur-md border-b border-gray-800' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center">
               <div className="flex items-center">
-                <Code2 className="h-8 w-8 text-blue-600" />
-                <span className="ml-2 text-xl font-bold text-gray-900">CodeMentor</span>
+                <Code2 className="h-8 w-8 text-blue-400" />
+                <span className="ml-2 text-xl font-bold text-white">CodeMentor</span>
               </div>
             </div>
             
             <div className="hidden md:block">
-              <div className="ml-10 flex items-center space-x-8">
-                <a href="#features" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Features</a>
-                <a href="#how-it-works" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">How It Works</a>
-                <a href="#pricing" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Pricing</a>
-                <a href="#testimonials" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Testimonials</a>
+              <div className="hidden md:flex items-center space-x-8">
+                <a href="#features" className="text-gray-300 hover:text-white transition-colors font-medium">Features</a>
+                <a href="#benefits" className="text-gray-300 hover:text-white transition-colors font-medium">Benefits</a>
+                <a href="#pricing" className="text-gray-300 hover:text-white transition-colors font-medium">Pricing</a>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
-              <Button 
-                variant="outline" 
-                className="hidden md:block"
-                onClick={() => {}}
-              >
-                Log In
-              </Button>
-              <Button 
-                variant="primary" 
-                className="hidden md:block"
-                onClick={() => {}}
-              >
-                Get Started
-              </Button>
+              <Link to="/login" className="hidden md:block">
+                <Button 
+                  variant="outline"
+                  className="hidden md:block"
+                >
+                  Log In
+                </Button>
+              </Link>
+              <Link to="/register" className="hidden md:block">
+                <Button 
+                  variant="primary"
+                  className="hidden md:block"
+                >
+                  Sign Up
+                </Button>
+              </Link>
               <button className="md:hidden p-2 text-gray-600 hover:text-blue-600">
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -145,16 +147,16 @@ const HomePage: React.FC = () => {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center lg:text-left lg:flex lg:items-center lg:justify-between">
           <div className="lg:w-1/2">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-              Master Coding with <span className="text-blue-600">AI-Powered</span> Mentorship
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
+              Master Coding with <span className="text-blue-400">AI-Powered</span> Mentorship
             </h1>
-            <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0">
+            <p className="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0">
               Level up your programming skills with personalized guidance, real-time feedback, and hands-on coding challenges designed to help you succeed.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
               <Button 
                 variant="primary" 
-                className="w-full sm:w-auto px-8 py-4 text-lg"
+                className="w-full sm:w-auto px-8 py-4 text-lg border-gray-600 text-gray-300 hover:bg-gray-800/50 hover:text-white transition-colors"
                 onClick={() => {}}
               >
                 Start Learning Free
@@ -226,13 +228,69 @@ const HomePage: React.FC = () => {
               Start Coding Now
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button className="text-lg px-8 py-3 border border-gray-300 bg-white hover:bg-gray-50">
+            <Button 
+              variant="outline"
+              className="text-lg px-8 py-3 bg-white hover:bg-gray-50"
+            >
               <Play className="mr-2 w-5 h-5" />
               Watch Demo
             </Button>
           </div>
         </div>
       </section>
+      
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-white font-semibold mb-4">Product</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:text-white">Features</a></li>
+                <li><a href="#" className="hover:text-white">Pricing</a></li>
+                <li><a href="#" className="hover:text-white">Documentation</a></li>
+                <li><a href="#" className="hover:text-white">Releases</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-white font-semibold mb-4">Company</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:text-white">About</a></li>
+                <li><a href="#" className="hover:text-white">Blog</a></li>
+                <li><a href="#" className="hover:text-white">Careers</a></li>
+                <li><a href="#" className="hover:text-white">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-white font-semibold mb-4">Support</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:text-white">Help Center</a></li>
+                <li><a href="#" className="hover:text-white">Community</a></li>
+                <li><a href="#" className="hover:text-white">Status</a></li>
+                <li><a href="#" className="hover:text-white">API</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-white font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:text-white">Privacy</a></li>
+                <li><a href="#" className="hover:text-white">Terms</a></li>
+                <li><a href="#" className="hover:text-white">Cookie Policy</a></li>
+                <li><a href="#" className="hover:text-white">GDPR</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center">
+              <Code2 className="h-8 w-8 text-blue-600" />
+              <span className="ml-2 text-xl font-bold text-white">CodeMentor</span>
+            </div>
+            <div className="mt-4 md:mt-0 text-sm text-gray-400">
+              &copy; {new Date().getFullYear()} CodeMentor. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
